@@ -1,34 +1,38 @@
 # UNP_ML_REGRESSION_PROJECT_GARMENT_WORKER_PRODUCTIVITY_USING_PYTHON
 
-This project was completed as part of the United Network of Professionals (UNP) Machine Learning using python Academic Internship Program , and it was executed as a collaborative group project.
+This project was completed as part of the **United Network of Professionals (UNP) Machine Learning Academic Internship Program**.
 
-The project focuses on predicting customer subscription to term deposits in a direct marketing campaign of a Portuguese banking institution using machine learning and deep learning. It aims to analyze how customer demographics, financial profiles, and campaign contact attributes influence binary subscription outcomes (0 for No, 1 for Yes).
+The project focuses on tracking, analyzing, and predicting the continuous productivity of garment manufacturing teams (actual_productivity, ranging from 0.0 to 1.0) using an end-to-end machine learning and deep learning regression pipeline. It aims to understand how operational factors, workflow delays, and team attributes influence production output in a labor-driven manufacturing environment.
 
  Project Overview
 
-* Analyzed a dataset containing 45,211 records and 17 attributes related to bank direct marketing campaigns.
-* Conducted exploratory data analysis (EDA) using box plots for outlier detection across numerical features (balance, duration, campaign, pdays, previous), count plots for categorical distributions and target class imbalance, and pie charts for proportional breakdowns.
-* Performed structural inspection and missing-value diagnostics to verify data completeness.
-* Applied data preprocessing and feature engineering, including dropping non-generalizable temporal features (day, month), converting sentinel values (-1 to 0) in pdays, and binning 12 granular job categories into three income-aligned tiers (High, Medium, Low).
-* Encoded binary attributes (default, housing, loan, y) into numerical format and applied one-hot dummy encoding (drop_first=True) to multi-class categorical features to prevent multicollinearity.
+* Analyzed the Garment Worker Productivity dataset containing 1,197 records and 15 attributes, exporting a finalized 13-feature cleaned dataset.
+* Conducted exploratory data analysis (EDA) using consolidated box plots for outlier detection across 10 numerical attributes (targeted_productivity, smv, wip, over_time, incentive, idle_time, idle_men, no_of_style_change, no_of_workers, actual_productivity), along with count plots and pie charts for categorical and proportional breakdowns.
+* Performed missing-value diagnostics, identifying 506 missing records (42.27%) in Work-in-Progress (wip) and imputing them with 0 to reflect zero unfinished inventory between shifts.
+* Applied domain-driven preprocessing, including dropping non-predictive identifiers (date, team), normalizing department string inconsistencies, aggregating days of the week into weekdays and weekends, and clipping actual_productivity upper bounds at 1.0.
+* Encoded quarter sequentially (1 through 5) and applied one-hot dummy encoding (drop_first=True) to department and day to prevent multicollinearity.
+
 
 
  Machine Learning Implementation
 
-* Applied Variance Inflation Factor (VIF) analysis to evaluate multicollinearity among predictors and used StandardScaler with train-test splitting to prepare the data for modeling.
-* Developed binary classification models using Logistic Regression, K-Nearest Neighbors (KNN), and Support Vector Classification (SVC).
-* Implemented tree-based and ensemble classification algorithms, including Decision Tree, Random Forest, AdaBoost, Gradient Boosting, and XGBoost.
-* Built an end-to-end deep learning pipeline using TensorFlow to predict term deposit subscriptions.
+* Applied Variance Inflation Factor (VIF) analysis using statsmodels to evaluate multicollinearity, and prepared features using  StandardScaler, train_test_split, and fixed random seeds (SEED = 42) for reproducibility.
+* Developed regression models using Linear Regression, K-Nearest Neighbors (KNeighborsRegressor), and Support Vector Regression (SVR).
+* Implemented tree-based and ensemble regression algorithms, including Decision Tree, Random Forest, AdaBoost, Gradient Boosting, and XGBoost (XGBRegressor).
+* Built a deep learning regression pipeline using TensorFlow to predict continuous team productivity.
 
 
 
  Model Evaluation
 
-* Assessed predictive performance using classification evaluation metrics including Accuracy, Precision, Recall, F1-Score, and ROC-AUC.
-* Generated confusion matrices and detailed classification reports to compare algorithm effectiveness across imbalanced target classes.
-Project Outcome
+* Assessed predictive performance using standard regression evaluation metrics, including $R^2$ Score, Mean Squared Error (MSE), and Mean Absolute Error (MAE).
+* Compared traditional machine learning, ensemble, and deep learning architectures to evaluate their effectiveness on manufacturing productivity data.
 
-The project provided hands-on experience in end-to-end data preprocessing, exploratory data analysis, feature engineering, multicollinearity diagnostics, ensemble classification modeling, and deep learning with TensorFlow. It demonstrates how supervised machine learning and neural networks can be applied to banking datasets to predict customer behavior and support targeted marketing strategies.
+
+
+ Project Outcome
+
+The project provided hands-on experience in end-to-end data cleaning, domain-specific imputation, exploratory data analysis, multicollinearity diagnostics, ensemble regression modeling, and deep learning with TensorFlow. It demonstrates how supervised machine learning and neural networks can be applied to manufacturing datasets to forecast team productivity and support data-driven operational analysis.
 
 Google collab link : https://drive.google.com/file/d/1J7GREtE5_szxM7-_ZA19gH34gKhsNYqq/view?usp=sharing
 
